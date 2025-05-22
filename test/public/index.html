@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Demo</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form id="loginForm">
+        <input type="text" id="login" placeholder="Login" required><br>
+        <input type="password" id="password" placeholder="Password" required><br>
+        <button type="submit">Login</button>
+    </form>
+    <pre id="output"></pre>
+
+    <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        fetch("../api/login.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                login: document.getElementById("login").value,
+                password: document.getElementById("password").value
+            })
+        })
+        .then(res => res.json())
+        .then(data => document.getElementById("output").textContent = JSON.stringify(data, null, 2));
+    });
+    </script>
+</body>
+</html>
