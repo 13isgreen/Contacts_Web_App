@@ -10,7 +10,7 @@ body, html {
 }
 
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("img/heroimage.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("img/bwall.webp");
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -19,12 +19,21 @@ body, html {
 }
 
 .hero-text {
+  border : 10.5px solid #C7874C;
+  box-shadow : 5px 5px 5px 0px #000000;
+  border-radius : 13%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("img/bflower2.jpg"); 
+  
+
+  width: 50%;
+  height: 50%;
+
   text-align: center;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: rgb(241, 240, 243);
 }
 
 .hero-text button {
@@ -39,6 +48,7 @@ body, html {
 }
 
 .hero-text button:hover {
+
   background-color: #555;
   color: white;
 }
@@ -48,13 +58,12 @@ body, html {
 
 <div class="hero-image">
   <div class="hero-text">
-    <h1 style="font-size:50px">Contact Manager</h1>  
+    <h1 style="font-size:80px">Contact Manager</h1>  
     <p>Securly store your contancts here. </p>
     <button onclick="document.location='login.html'"">Sign in / Register</button>
   </div>
 </div>
 
-<p>Easter EGG..</p>
 
 </body>
 </html>
