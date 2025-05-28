@@ -1,4 +1,4 @@
-ackage main
+Package main
 
 import (
     "database/sql"
