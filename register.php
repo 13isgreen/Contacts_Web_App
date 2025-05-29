@@ -3,7 +3,7 @@ include 'db.php';
 
 $firstName = $_POST['FirstName'];
 $lastName = $_POST['LastName'];
-$login = $_POST['Login'];
+$login = $_POST['login'];
 $password = $_POST['password'];
 
 // Hash password before storing
