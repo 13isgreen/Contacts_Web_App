@@ -28,7 +28,9 @@ if ($row = $result->fetch_assoc()) {
         $password === $storedPassword                   // plaintext mode
     ) {
         // Success! Redirect to dashboard
-        header("Location: index.html");
+        header("Location: view_contacts.html");
+        session_start();
+        $_SESSION['user_id'] = $row['ID'];
         exit();
     } else {
         echo "Invalid login or password.";
