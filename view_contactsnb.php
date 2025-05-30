@@ -25,16 +25,39 @@ $result = $stmt->get_result();
   <title>View Contacts - Contact Manager</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    .contacts-content {
-      background-color: rgba(255, 255, 255, 0.95);
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      max-width: 900px;
-      margin: auto;
-    }
-  </style>
+<style>
+  .contacts-content {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .contacts-content table {
+    color: #fff;
+  }
+
+  .contacts-content .table thead {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .contacts-content .table tbody tr {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .contacts-content .table-hover tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .contacts-content .btn {
+    font-weight: bold;
+  }
+</style>
 </head>
 <body>
 <div class="studio-image">
