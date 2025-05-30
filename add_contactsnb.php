@@ -27,7 +27,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssssi", $firstName, $lastName, $email, $phone, $userId);
 
 if ($stmt->execute()) {
-    header("Location: view_contacts.php");
+    header("Location: view_contactsnb.php");
     exit();
 } else {
     echo "Error adding contact: " . $stmt->error;
