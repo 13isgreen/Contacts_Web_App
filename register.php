@@ -3,11 +3,13 @@ include 'db.php';
 
 $firstName = $_POST['FirstName'];
 $lastName = $_POST['LastName'];
-$login = $_POST['Login'];
+$login = $_POST['login'];
 $password = $_POST['password'];
 
 // Hash password before storing
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+//$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+$hashedPassword = $password;
+
 
 $sql = "INSERT INTO Users (FirstName, LastName, Login, Password)
         VALUES (?, ?, ?, ?)";
@@ -23,3 +25,4 @@ if ($stmt->execute()) {
 
 $conn->close();
 ?>
+

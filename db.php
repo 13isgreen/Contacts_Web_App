@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "nathanB";        // change if needed
-$password = "Group13Pass";            // set your MySQL root password
+$username = "nathanB";        
+$password = "Group13Pass";   
 $dbname = "COP4331";
 
 // Create connection
