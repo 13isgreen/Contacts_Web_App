@@ -28,7 +28,7 @@ if ($row = $result->fetch_assoc()) {
         $password === $storedPassword                   // plaintext mode
     ) {
         // Success! Redirect to dashboard
-        header("Location: view_contacts.html");
+        header("Location: view_contactsnp.php");
         session_start();
         $_SESSION['user_id'] = $row['ID'];
         exit();
