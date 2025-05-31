@@ -63,6 +63,7 @@ $result = $stmt->get_result();
 <div class="studio-image">
   <nav class="navbar navbar-dark bg-dark px-4">
     <a class="navbar-brand" href="dashboard.html">Dashboard</a>
+    <a class="btn btn-outline-light ms-2" href="login.html">Logout</a>
   </nav>
 
   <div class="heroframe-text d-flex flex-column justify-content-center align-items-center">
@@ -87,7 +88,7 @@ $result = $stmt->get_result();
         </tbody>
       </table>
 
-      <a href="dashboard.html" class="btn btn-outline-secondary mt-3">Back to Dashboard</a>
+      <a href="add_contact.html" class="btn btn-outline-secondary mt-3">Add Contact</a>
     </div>
   </div>
 </div>
