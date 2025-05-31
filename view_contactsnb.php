@@ -88,7 +88,7 @@ $result = $stmt->get_result();
         </tbody>
       </table>
 
-      <a href="add_contact.html" class="btn btn-outline-secondary mt-3">Add Contact</a>
+      <a href="add_contacts.html" class="btn btn-outline-secondary mt-3">Add Contact</a>
     </div>
   </div>
 </div>
