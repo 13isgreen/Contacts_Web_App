@@ -36,6 +36,9 @@ $result = $stmt->get_result();
     <!-- NAVBAR -->
     <nav class="navbar navbar-dark bg-dark px-4">
       <a class="navbar-brand" href="dashboard.html">Dashboard</a>
+      <div class="ms-auto">
+        <a href="logout.php" class="btn btn-outline-light">Logout</a>
+      </div>
     </nav>
 
     <!-- CONTACTS PANEL -->
