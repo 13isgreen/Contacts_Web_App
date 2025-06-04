@@ -83,6 +83,10 @@ $result = $stmt->get_result();
               <td><?= htmlspecialchars($row['LastName']) ?></td>
               <td><?= htmlspecialchars($row['Email']) ?></td>
               <td><?= htmlspecialchars($row['Phone']) ?></td>
+              <td>
+                  <a href="edit_contact.php?id=<?= $row['ID'] ?>" class="btn btn-sm btn-primary me-1">Edit</a>
+                  <a href="delete_contact.php?id=<?= $row['ID'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this contact?')">Delete</a>
+              </td>
             </tr>
           <?php endwhile; ?>
         </tbody>
