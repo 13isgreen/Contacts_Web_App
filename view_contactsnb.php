@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $userId = $_SESSION['user_id'];
-$contactsPerPage = 10;
+$contactsPerPage = 5;
 $page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
 $offset = ($page - 1) * $contactsPerPage;
 $search = $_GET['search'] ?? '';
@@ -76,7 +76,7 @@ $result = $stmt->get_result();
     <nav class="navbar navbar-dark bg-dark px-4">
       <a class="navbar-brand" href="dashboard.html">Dashboard</a>
       <div class="ms-auto">
-        <a href="logout.php" class="btn btn-outline-light">Logout</a>
+        <a href="index.html" class="btn btn-outline-light">Logout</a>
       </div>
     </nav>
 
