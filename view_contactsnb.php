@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $userId = $_SESSION['user_id'];
-$contactsPerPage = 5;
+$contactsPerPage = 10;
 $page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
 $offset = ($page - 1) * $contactsPerPage;
 $search = $_GET['search'] ?? '';
@@ -30,10 +30,11 @@ $totalPages = ceil($totalContacts / $contactsPerPage);
 
 // Fetch paginated contacts
 if (!empty($search)) {
+    $searchTerm = "%{$search}%";
     $stmt = $conn->prepare("SELECT * FROM Contacts WHERE UserID = ? AND (
         FirstName LIKE ? OR LastName LIKE ? OR Email LIKE ? OR Phone LIKE ?
     ) LIMIT ? OFFSET ?");
-    $stmt->bind_param("sssssi", $userId, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $contactsPerPage, $offset);
+    $stmt->bind_param("issssii", $userId, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $contactsPerPage, $offset);
 } else {
     $stmt = $conn->prepare("SELECT * FROM Contacts WHERE UserID = ? LIMIT ? OFFSET ?");
     $stmt->bind_param("iii", $userId, $contactsPerPage, $offset);
