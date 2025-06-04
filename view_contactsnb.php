@@ -1,13 +1,18 @@
 <?php
+session_start();
 require 'db.php';
 
+// Redirect if not logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.html");
+    exit;
+}
 
- session_start();
- $userId = $_SESSION['user_id'];
- $stmt = $conn->prepare("SELECT * FROM Contacts WHERE UserID = ?");
- $stmt->bind_param("i", $userId);
+$userId = $_SESSION['user_id'];
 
-$stmt = $conn->prepare("SELECT * FROM Contacts");
+// Fetch only contacts for this user
+$stmt = $conn->prepare("SELECT * FROM Contacts WHERE UserID = ?");
+$stmt->bind_param("i", $userId);
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
@@ -51,13 +56,14 @@ $result = $stmt->get_result();
             <tbody>
               <?php while ($row = $result->fetch_assoc()): ?>
               <tr>
-                <td><?= htmlspecialchars($row['FirstName']) ?></td>
-                <td><?= htmlspecialchars($row['LastName']) ?></td>
-                <td><?= htmlspecialchars($row['Email']) ?></td>
-                <td><?= htmlspecialchars($row['Phone']) ?></td>
+                <td><?php echo htmlspecialchars($row['FirstName']); ?></td>
+                <td><?php echo htmlspecialchars($row['LastName']); ?></td>
+                <td><?php echo htmlspecialchars($row['Email']); ?></td>
+                <td><?php echo htmlspecialchars($row['Phone']); ?></td>
                 <td>
-                  <a href="edit_contact.php?id=<?= $row['ID'] ?>" class="btn btn-sm btn-primary me-1">Edit</a>
-                  <a href="delete_contact.php?id=<?= $row['ID'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this contact?')">Delete</a>
+                  <a href="edit_contactnb.php?id=<?php echo $row['ID']; ?>" class="btn btn-sm btn-primary me-1">Edit</a>
+                  <a href="delete_contactnb.php?id=<?php echo $row['ID']; ?>" class="btn btn-sm btn-danger"
+                     onclick="return confirm('Are you sure you want to delete this contact?')">Delete</a>
                 </td>
               </tr>
               <?php endwhile; ?>
@@ -73,4 +79,3 @@ $result = $stmt->get_result();
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
