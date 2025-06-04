@@ -109,7 +109,7 @@ $result = $stmt->get_result();
               <td><?= htmlspecialchars($row['Email']) ?></td>
               <td><?= htmlspecialchars($row['Phone']) ?></td>
               <td>
-                <a href="edit_contactnb.php?id=<?= $row['ID'] ?>" class="btn btn-sm btn-outline-light me-1" title="Edit">
+                <a href="edit_contactnb.php?id=<?= $row['ID'] ?>" class="btn btn-sm btn-outline-primary me-1" title="Edit">
                   <i class="bi bi-pencil-square"></i>
                 </a>
                 <a href="delete_contactnb.php?id=<?= $row['ID'] ?>" class="btn btn-sm btn-outline-danger" title="Delete" onclick="return confirm('Are you sure?')">
