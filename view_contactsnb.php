@@ -48,6 +48,7 @@ $result = $stmt->get_result();
   <meta charset="UTF-8">
   <title>View Contacts - Contact Manager</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -108,8 +109,12 @@ $result = $stmt->get_result();
               <td><?= htmlspecialchars($row['Email']) ?></td>
               <td><?= htmlspecialchars($row['Phone']) ?></td>
               <td>
-                <a href="edit_contactnb.php?id=<?= $row['ID'] ?>" class="btn btn-sm btn-primary me-1">Edit</a>
-                <a href="delete_contactnb.php?id=<?= $row['ID'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this contact?')">Delete</a>
+                <a href="edit_contactnb.php?id=<?= $row['ID'] ?>" class="btn btn-sm btn-outline-light me-1" title="Edit">
+                  <i class="bi bi-pencil-square"></i>
+                </a>
+                <a href="delete_contactnb.php?id=<?= $row['ID'] ?>" class="btn btn-sm btn-outline-danger" title="Delete" onclick="return confirm('Are you sure?')">
+                  <i class="bi bi-trash"></i>
+                </a>
               </td>
             </tr>
             <?php endwhile; ?>
