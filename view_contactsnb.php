@@ -1,11 +1,11 @@
 <?php
 require 'db.php';
 
-// Example user filtering (if you're using sessions)
-// session_start();
-// $userId = $_SESSION['user_id'];
-// $stmt = $conn->prepare("SELECT * FROM Contacts WHERE UserID = ?");
-// $stmt->bind_param("i", $userId);
+
+ session_start();
+ $userId = $_SESSION['user_id'];
+ $stmt = $conn->prepare("SELECT * FROM Contacts WHERE UserID = ?");
+ $stmt->bind_param("i", $userId);
 
 $stmt = $conn->prepare("SELECT * FROM Contacts");
 $stmt->execute();
