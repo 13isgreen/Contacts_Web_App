@@ -2,20 +2,30 @@
 session_start();
 require 'db.php';
 
-// Redirect if not logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.html");
     exit;
 }
 
 $userId = $_SESSION['user_id'];
+$search = $_GET['search'] ?? '';
 
-// Fetch only contacts for this user
-$stmt = $conn->prepare("SELECT * FROM Contacts WHERE UserID = ?");
-$stmt->bind_param("i", $userId);
+// If there's a search term, use LIKE
+if (!empty($search)) {
+    $searchTerm = "%{$search}%";
+    $stmt = $conn->prepare("SELECT * FROM Contacts WHERE UserID = ? AND (
+        FirstName LIKE ? OR LastName LIKE ? OR Email LIKE ? OR Phone LIKE ?
+    )");
+    $stmt->bind_param("issss", $userId, $searchTerm, $searchTerm, $searchTerm, $searchTerm);
+} else {
+    $stmt = $conn->prepare("SELECT * FROM Contacts WHERE UserID = ?");
+    $stmt->bind_param("i", $userId);
+}
+
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,9 +47,18 @@ $result = $stmt->get_result();
     <nav class="navbar navbar-dark bg-dark px-4">
       <a class="navbar-brand" href="dashboard.html">Dashboard</a>
       <div class="ms-auto">
-        <a href="logout.php" class="btn btn-outline-light">Logout</a>
+        <a href="index.html" class="btn btn-outline-light">Logout</a>
       </div>
     </nav>
+
+    <!-- SEARCH -->
+    <form method="GET" class="mb-4 w-75 mx-auto">
+    <div class="input-group">
+      <input type="text" name="search" class="form-control" placeholder="Search contacts..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
+      <button class="btn btn-outline-light btn-sm btn-dark" type="submit">Search</button>
+      <a href="view_contactsnb.php" class="btn btn-outline-secondary btn-sm">Reset</a>
+    </div>
+    </form>
 
     <!-- CONTACTS PANEL -->
     <div class="heroframe-text d-flex flex-column justify-content-center align-items-center">
