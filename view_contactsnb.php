@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $userId = $_SESSION['user_id'];
-$contactsPerPage = 6;
+$contactsPerPage = 5;
 $page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
 $offset = ($page - 1) * $contactsPerPage;
 $search = $_GET['search'] ?? '';
